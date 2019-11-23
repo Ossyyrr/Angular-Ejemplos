@@ -1,0 +1,54 @@
+<p>example-component works!</p>
+
+<p>the variable name exists and the value is {{ name }}</p>
+
+
+<div *ngIf="name"> 
+    <p>Existe y su valor es {{name}}</p>
+</div>
+
+
+<!-- 
+<div *ngIf="collection.length">
+    <p *ngFor="let number of collection">{{ number }}</p>
+</div> -->
+
+<button (click)="onButtonClick()">Click Me!</button>
+
+<p>{{username}}</p>
+
+
+<input [(ngModel)]="username" (ngModelChange)="showInput()">
+
+<h3>Form example</h3>
+<form [formGroup]="customForm" (ngSubmit)="onSubmit(customForm.value)">
+    
+    <div>
+        <label for="name">
+            Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+    
+    <div>
+        <label for="age">
+            Age
+        </label>
+        <input id="age" type="number" formControlName="age">
+    </div>
+    
+    <button class="button" type="submit">Submit</button>
+</form>
+
+
+<h3>We'll use this input to change the name and send it down the component tree</h3>
+
+<input [(ngModel)]="username" (ngModelChange)="showInput()">
+<app-input-component [nameee]="username"></app-input-component>
+
+
+<p>-----------------------------------------------</p>
+
+<app-output-component (emitMessage)="setMessage($event)"></app-output-component>
+<h3>And next, we'll see the message ⬇️</h3>
+<p>{{ outputMessage }}</p>
